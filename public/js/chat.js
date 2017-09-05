@@ -39,10 +39,6 @@ socket.on('newMessage', (message) => {
     });
     $('#messages').append(html);
     scrollToBottom();
-
-    // const li = $('<li></li>');
-    // li.text(`${message.from} ${formattedTime}: ${message.text}`);
-    // $('#messages').append(li);
 });
 
 socket.on('newLocationMessage', (message) => {
@@ -55,13 +51,6 @@ socket.on('newLocationMessage', (message) => {
     });
     $('#messages').append(html);
     scrollToBottom();
-
-    // const li = $('<li></li>');
-    // const a = $('<a target="_blank">My current location</a>');
-    // li.text(`${message.from} ${formattedTime}: `);
-    // a.attr('href', message.url);
-    // li.append(a);
-    // $('#messages').append(li);
 });
 
 socket.on('updateUserList', (users) => {
