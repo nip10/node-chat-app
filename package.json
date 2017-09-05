@@ -1,22 +1,24 @@
 {
   "name": "node-chat-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Simple chat webapp with Node and Socketio",
+  "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
+    "prod": "pm2 start server/server.js",
     "test": "mocha server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'"
   },
   "engines": {
     "node": "6.9.1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Diogo Cardoso",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",
     "moment": "^2.17.0",
-    "socket.io": "^1.6.0"
+    "socket.io": "^1.6.0",
+    "dotenv": "^4.0.0"
   },
   "devDependencies": {
     "expect": "^1.20.2",
