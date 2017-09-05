@@ -1,10 +1,12 @@
+require('dotenv').config();
 const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
 
-const publicPath = path.join(__dirname, '../public');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
+const env = process.env.NODE_ENV;
+
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
@@ -15,7 +17,10 @@ const {isRealString} = require('./utils/validation');
 const {Users} = require('./utils/users');
 const users = new Users();
 
-app.use(express.static(publicPath));
+if (env !== 'production') {
+    const publicPath = path.join(__dirname, '../public');
+    app.use(express.static(publicPath));
+}
 
 io.on('connection', (socket) => {
     console.log('New user connected');
@@ -28,14 +33,7 @@ io.on('connection', (socket) => {
         socket.join(params.room);
         users.removeUser(socket.id);
         users.addUser(socket.id, params.name, params.room);
-
         io.to(params.room).emit('updateUserList', users.getUserList(params.room));
-        // socket.leave(params.room);
-
-        // io.emit -> io.to('Room name').emit
-        // socket.broadcast.emit -> socket.broadcast.to('Room name').emit
-        // socket.emit
-
         socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));
         socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin', `${params.name} has joined`));
         callback();
