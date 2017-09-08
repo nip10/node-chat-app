@@ -1,0 +1,9 @@
+{
+    "extends": "airbnb",
+    "env": {
+      "mocha": true
+    },
+    "rules": {
+      "linebreak-style": ["error", "windows"]
+    }
+  }
