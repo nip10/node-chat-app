@@ -9,11 +9,19 @@
     "test": "mocha server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nip10/node-chat-app.git"
+  },
   "engines": {
     "node": "6.9.1"
   },
   "author": "Diogo Cardoso",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nip10/node-chat-app/issues"
+  },
+  "homepage": "https://github.com/nip10/node-chat-app#readme",
   "dependencies": {
     "express": "^4.14.0",
     "moment": "^2.17.0",
