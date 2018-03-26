@@ -4,12 +4,12 @@
   "description": "Simple chat webapp with Node and SocketIO",
   "main": "dist/server.js",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "cross-env NODE_ENV=production node dist/server.js",
     "build": "babel src -d dist",
-    "dev": "nodemon src/server.js --exec babel-node",
-    "prod": "pm2 start dist/server.js",
-    "test": "jest",
-    "test-watch": "jest --watchAll",
+    "dev": "cross-env NODE_ENV=development nodemon src/server.js --exec babel-node",
+    "prod": "cross-env NODE_ENV=production pm2 start dist/server.js",
+    "test": "cross-env NODE_ENV=test jest",
+    "test-watch": "cross-env NODE_ENV=test jest --watchAll",
     "lint": "eslint src/**"
   },
   "repository": {
@@ -34,6 +34,7 @@
     "babel-jest": "^22.4.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
+    "cross-env": "^5.1.4",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.9.0",
