@@ -12,13 +12,13 @@ dotenv.config();
 
 const users = new Users();
 
-const { PORT, ENV } = process.env;
+const { PORT, NODE_ENV } = process.env;
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
-if (ENV !== 'production') {
+if (NODE_ENV !== 'production') {
   const publicPath = path.join(__dirname, '../public');
   app.use(express.static(publicPath));
 }
@@ -66,5 +66,5 @@ io.on('connection', socket => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Server is up on port ${PORT} in ${ENV} mode.`);
+  console.log(`Server is up on port ${PORT} in ${NODE_ENV} mode.`);
 });
