@@ -1,4 +1,4 @@
-const moment = require('moment');
+import moment from 'moment';
 
 const generateMessage = (from, text) => ({
   from,

@@ -1,0 +1,21 @@
+{
+  "name": "Chat App",
+  "short_name": "Chat App",
+  "icons": [
+    {
+      "src": "icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#265f82",
+  "theme_color": "#265f82"
+}

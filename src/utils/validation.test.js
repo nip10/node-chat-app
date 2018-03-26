@@ -1,5 +1,4 @@
-const expect = require('expect');
-const { isRealString } = require('./validation');
+import { isRealString } from './validation';
 
 describe('isRealString', () => {
   it('should reject non-string values', () => {
@@ -15,4 +14,3 @@ describe('isRealString', () => {
     expect(res).toBe(true);
   });
 });
-

@@ -1,58 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./css/styles.css">
-        <title>Chat | ChatApp</title>
-    </head>
-    <body class="chat">
 
-        <div class="chat__sidebar">
-            <h3>Online users</h3>
-            <div id="users"></div>
-        </div>
+<head>
+  <meta content="utf-8">
+  <meta name="description" content="Talk to everyone you want with this Chat App">
+  <meta name="keywords" content="Chat, PWA, App">
+  <meta name="author" content="Diogo Cardoso">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+  <link rel="icon" href="./favicon.ico" type="image/ico">
+  <meta name="theme-color" content="#265f82">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="manifest" href="./manifest.json">
+  <title>ChatApp</title>
+</head>
 
-        <div class="chat__main">
-            <ol id="messages" class="chat__messages"></ol>
+<body class="chat">
 
-            <div class="chat__footer">
-                <form id="message-form">
-                    <input type="text" name="message" placeholder="Message" autofocus autocomplete="off"/>
-                    <button>Send</button>
-                </form>
-                <button id="send-location">Send location</button>
-            </div>
-        </div>
+  <div class="chat__sidebar">
+    <h3>Online users</h3>
+    <div id="users"></div>
+  </div>
 
-        <script id="message-template" type="text/template">
-            <li class="message">
-                <div class="message__title">
-                    <h4>{{from}}</h4>
-                    <span>{{createdAt}}</span>
-                </div>
-                <div class="message__body">
-                    <p>{{text}}</p>
-                </div>
-            </li>            
-        </script>
+  <div class="chat__main">
+    <ol id="messages" class="chat__messages"></ol>
 
-        <script id="location-message-template" type="text/template">
-            <li class="message">
-                <div class="message__title">
-                    <h4>{{from}}</h4>
-                    <span>{{createdAt}}</span>
-                </div>
-                <div class="message__body">
-                    <p><a href="{{url}}" target="_blank">My current location</a></p>
-                </div>
-            </li>            
-        </script>
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
-        <script src="./js/libs/deparam.js"></script>
-        <script src="./js/chat.js"></script>
-    </body>
+    <div class="chat__footer">
+      <form id="message-form">
+        <input type="text" name="message" placeholder="Message" autofocus autocomplete="off" />
+        <button>Send</button>
+      </form>
+      <button id="send-location">Send location</button>
+    </div>
+  </div>
+
+  <script id="message-template" type="text/template">
+    <li class="message">
+      <div class="message__title">
+        <h4>{{from}}</h4>
+        <span>{{createdAt}}</span>
+      </div>
+      <div class="message__body">
+        <p>{{text}}</p>
+      </div>
+    </li>
+  </script>
+
+  <script id="location-message-template" type="text/template">
+    <li class="message">
+      <div class="message__title">
+        <h4>{{from}}</h4>
+        <span>{{createdAt}}</span>
+      </div>
+      <div class="message__body">
+        <p><a href="{{url}}" target="_blank">My current location</a></p>
+      </div>
+    </li>
+  </script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+  <script src="./js/libs/deparam.js"></script>
+  <script src="./js/chat.js"></script>
+</body>
+
 </html>

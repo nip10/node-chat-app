@@ -1,34 +1,34 @@
-require('dotenv').config();
-const path = require('path');
-const http = require('http');
-const express = require('express');
-const socketIO = require('socket.io');
+import path from 'path';
+import http from 'http';
+import express from 'express';
+import socketIO from 'socket.io';
+import dotenv from 'dotenv';
 
-const port = process.env.PORT;
-const env = process.env.NODE_ENV;
+import { generateMessage, generateLocationMessage } from './utils/message';
+import { isRealString } from './utils/validation';
+import { Users } from './utils/users';
+
+dotenv.config();
+
+const users = new Users();
+
+const { PORT, ENV } = process.env;
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
-const { generateMessage, generateLocationMessage } = require('./utils/message');
-const { isRealString } = require('./utils/validation');
-
-const { Users } = require('./utils/users');
-
-const users = new Users();
-
-if (env !== 'production') {
+if (ENV !== 'production') {
   const publicPath = path.join(__dirname, '../public');
   app.use(express.static(publicPath));
 }
 
-io.on('connection', (socket) => {
+io.on('connection', socket => {
   console.log('New user connected');
 
   socket.on('join', (params, callback) => {
     if (!isRealString(params.name) || !isRealString(params.room)) {
-      return callback('Name and room name are required.');
+      return callback('Name and room are required.');
     }
     socket.join(params.room);
     users.removeUser(socket.id);
@@ -44,13 +44,15 @@ io.on('connection', (socket) => {
     if (user && isRealString(message.text)) {
       io.to(user.room).emit('newMessage', generateMessage(user.name, message.text));
     }
-    callback();
+    return callback();
   });
 
-  socket.on('createLocationMessage', (coords) => {
+  socket.on('createLocationMessage', coords => {
     const user = users.getUser(socket.id);
     if (user) {
-      io.to(user.room).emit('newLocationMessage', generateLocationMessage(user.name, coords.latitude, coords.longitude));
+      io
+        .to(user.room)
+        .emit('newLocationMessage', generateLocationMessage(user.name, coords.latitude, coords.longitude));
     }
   });
 
@@ -63,6 +65,6 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(port, () => {
-  console.log(`Server is up on port ${port}`);
+server.listen(PORT, () => {
+  console.log(`Server is up on port ${PORT} in ${ENV} mode.`);
 });
