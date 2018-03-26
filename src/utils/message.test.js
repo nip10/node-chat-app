@@ -1,15 +1,16 @@
-const expect = require('expect');
-
-const { generateMessage, generateLocationMessage } = require('./message');
+import { generateMessage, generateLocationMessage } from './message';
 
 describe('generateMessage', () => {
   it('should generate a correct message object', () => {
     const from = 'Jen';
     const text = 'Some message';
+
     const message = generateMessage(from, text);
 
-    expect(message.createdAt).toBeA('number');
-    expect(message).toInclude({ from, text });
+    expect(typeof message.createdAt).toBe('number');
+    expect(typeof message.from).toBe('string');
+    expect(typeof message.text).toBe('string');
+    expect(message).toMatchObject({ from, text });
   });
 });
 
@@ -22,7 +23,8 @@ describe('generateLocationMessage', () => {
 
     const message = generateLocationMessage(from, latitude, longitude);
 
-    expect(message.createdAt).toBeA('number');
-    expect(message).toInclude({ from, url });
+    expect(typeof message.createdAt).toBe('number');
+    expect(typeof message.from).toBe('string');
+    expect(message).toMatchObject({ from, url });
   });
 });
