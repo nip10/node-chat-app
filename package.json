@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=production node dist/server.js",
     "build": "babel src -d dist",
     "dev": "cross-env NODE_ENV=development nodemon src/server.js --exec babel-node",
-    "prod": "cross-env NODE_ENV=production pm2 start dist/server.js",
+    "prod": "cross-env NODE_ENV=production pm2 start dist/server.js --name chat",
     "test": "cross-env NODE_ENV=test jest",
     "test-watch": "cross-env NODE_ENV=test jest --watchAll",
     "lint": "eslint src/**"
