@@ -1,6 +1,8 @@
 # Chat app
-> Simple chat app using SocketIO
-* The goal of this project was to learn how to use SocketIO and testing using Mocha (now using Jest). I've also adapted the app to be a PWA using ServiceWorkers/WebManifest. I know it doesn't make much sense on a chat app, but the goal was to get familiar with the concept.
+> Simple chat app using SocketIO, live [here](https://p.dcdev.pt/chat)
+* The goal of this project was to learn how to use SocketIO and testing using Mocha (now using Jest).
+
+
 
 <p align="center">
 <img src="http://via.placeholder.com/500x300">
