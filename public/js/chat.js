@@ -2,7 +2,7 @@
 
 /* eslint-disable no-alert */
 
-const socket = io();
+const socket = io('https://www.p.dcdev.pt', { path: '/chat/socket.io' });
 
 function scrollToBottom() {
   // selectors
