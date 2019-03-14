@@ -1,8 +1,11 @@
 # Chat app
-> Simple chat app using SocketIO, live [here](https://p.dcdev.pt/chat)
-* The goal of this project was to learn how to use SocketIO and testing using Mocha (now using Jest).
 
+[![Build Status](https://travis-ci.org/nip10/node-chat-app.svg?branch=master)](https://travis-ci.org/nip10/node-chat-app)
+[![codecov](https://codecov.io/gh/nip10/node-chat-app/branch/master/graph/badge.svg)](https://codecov.io/gh/nip10/node-chat-app)
 
+> Simple chat app using SocketIO, live [here](https://chat.diogocardoso.me)
+
+- The goal of this project was to learn how to use SocketIO and testing using Mocha (now using Jest).
 
 <p align="center">
 <img src="http://via.placeholder.com/500x300">
@@ -12,24 +15,24 @@
 
 ### Pre-requisites
 
-* Node
-* NPM
+- Node
+- NPM
 
 ### Installing
 
-* Install packages
+- Install packages
 
 ```
 npm install
 ```
 
-* Build assets
+- Build assets
 
 ```
 npm run build
 ```
 
-* Edit .env.sample and rename to .env
+- Edit .env.sample and rename to .env
 
 ```
 PORT= 3000
@@ -37,7 +40,7 @@ PORT= 3000
 
 ### Developing
 
-* Run in development mode
+- Run in development mode
 
 ```
 npm run dev
@@ -45,7 +48,7 @@ npm run dev
 
 ### Production
 
-* Run in production mode
+- Run in production mode
 
 ```
 npm run prod
@@ -55,7 +58,7 @@ Note: Static files are not served by Express in production. Instead, its advisab
 
 ### Testing
 
-* Run in test mode
+- Run in test mode
 
 ```
 npm run test
@@ -63,22 +66,22 @@ npm run test
 
 ## Built With
 
-* Node (ES6)
-* HTML5 + CSS + JS
+- Node (ES6)
+- HTML5 + CSS + JS
 
 ## Packages used
 
-* Express (server framework)
-* SocketIO (sockets for real time chat)
-* jQuery
-* Mustache (view engine)
+- Express (server framework)
+- SocketIO (sockets for real time chat)
+- jQuery
+- Mustache (view engine)
 
 ## Future improvements
 
-* Remove jQuery
-* Remove Express
-* List online users in mobile view
-* Save chat history for some time
+- Remove jQuery
+- Remove Express
+- List online users in mobile view
+- Save chat history for some time
 
 ## Contributing
 
