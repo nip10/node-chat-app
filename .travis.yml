@@ -1,0 +1,35 @@
+language: node_js
+node_js:
+  - "10"
+sudo: false
+cache:
+  yarn: true
+  directories:
+    - "node_modules"
+script:
+  - yarn global add codecov
+  - yarn run lint
+  - yarn run test:coverage
+  - yarn run build
+install:
+  - yarn
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+notifications:
+  email: false
+deploy:
+  provider: s3
+  access_key_id:
+    secure: "l5IuQgeRNydGDlsB1XgdMZcVZsyGpRhg+w92LXNSofK1p+2b+2h+6JgOj3wU5zdQy6pvebCwo6J1wjE8LF304rpXDHaabfYAXAQxi2Vo83KR05ElEsIYtqVuxoCoMyOfFUiz48G+31+N6jaOoWfiDPAn4LW3D5z10Z+At5q0ohmm6SnKzkizVd3hPzaQqv7qV1QADP8UpyGBf/zBkIWSvX+yTrDC8/vUulgV7zyR2LJpbvgMDUjQCjfi8YFwgrWMRuSDR83Hwpt/3eUBnE3Jajst4m+M1Ks/74wKXMT5sfiKgEb39wOTl6bNnYyoD+7IYWilCLyvdBSUdfB/NPSXkmmB6q0MV0qrGA8C+YqdS0pVUDIX32jHZ5E/LUTV4lhsL9EGPRydaRdLBdqPNg4bllmsARrxrUI9JuTexwm52vGAjJCKS5keWgIgwhJ7k0NE6Pf7HmOjZWiHI5aQ8zHOw1wNSo8uwUvydTuFtsetO69dUIpRpm1tGFe+BFCiW5val+jJzLLBUb2ZRX9xLIUUrQ+nj4MlSiQgkdJvUJ0N5uyXnJZbIZSKyg3kQtvRyzqfkpnND+ExiUrGOA3EqgVlRhotmi75jDOAWPTHi2UYgry2rrwy51IrQ5w7CtVz1vO357qVYPNVXceOHBcurpYywuplDLJnqBKtvJpP4HOh1Fc="
+  secret_access_key:
+    secure: "Xzh9/MxLPrs44f6XnUSVJdvZjYxJSBUggFooxaTIoA+BB1rUWZJAcjQQGtqZ2DiqJZueiTRg3Bk19nbfErxu//o7JbAeIXRoYBxyGgJq/L7ZFiijCXSecBBFHu1yqinBJqPAFU58GgqVwzfsCcQlCNY1/WOa0j8vKXGTnGC/+zbhoHcqvWY9HnC/QlkbTaMUzIC9zz2x9rtukHolum4Ki5nrhxtNhJ+vfohrlPL8/19bpHOWkDavli4wdVws3BOPMAbtOZAiFvkmQnttIh1YSXAKVXsfR+HIYFPhISltNM0mEtNmMCLxjnzyDQf2GCpSRO8Hv0CiVD0jiXq5DBBtyCMuleQTHPxgE7KAVTCINbtMgFWMVe3TV6sWNr+WT3D5VzIQdjtCaxS6sYD7IBu0sryfEhJNZFUpMZpjFS9e2vnDp9dFc1VmXnxMp58nXdnyT4tI2pVd6bI+7GNLK0ikQa+zL3LViNDvJEr8ih/Zz9Nbv4wULrTXHnuli7IOUUE5zbHNACILFxCRO5zzEHviw2fOZlYL+KJYFs1XzdMPLhFtMWcFWvtL4/pLDPSPqPk9EylFUHfZFh7PZ41I/YXL1eNxS+ziRSes47Vj+3WsAWqhBbq1LQWt0Q4q4ZO1KyV1rpU9XhKZQzOQH7EoM9QMbLJ0XGYtLyahL4gzcl1x114="
+  bucket: chat.diogocardoso.me
+  skip_cleanup: true
+  region: eu-west-2
+  local_dir: public
+after_deploy:
+  - aws cloudfront create-invalidation --distribution-id ${CF_DISTRIBUTION_ID} --paths /*
+env:
+  global:
+    - PORT: 3001
+    - secure: "imxuXsjTYIHGsQ8PVKwprqkjNX/lMS906WZyWgmQ41qJCqGyI6bDbVBAWias4NvfF2Esz9RWAsnq/St/M9V1rxau2kMQQuVuQCfPT3EACws39WOWqrgDMXbPaizLS1KcJu9Xf/nR4fvrpBFaoOmgeOhqciJXABHMmYgWJW36owp691juD6+/tvdKg7zlORnhrcHD1L+TB77TNuRps1tNYiVpvuULuDwoa7/JVw0hHOynSw69ayR+kv49FF8XcrSlRcFjiLXk2q38enQY5IRGX7eoSQ+QndvlKoWUOK7+COmVT2/IsVe6mrwrDCR3LokTxwkgYqYBC1QXJ/i6E32q8bROrCZFifHoEAmBWQkQumxM7aa/rEcKFXMPu7y//U/6KpIJJu+8pn1AujxkqVlPm+3x+w4LP9C4f4GfqErpWrzzap8TpqN46zNGytymLPFYTSRX08scw3DE3bc/l9fPqLjAoNjDF9+rk6RDhdmWetb8g1TjeSAnD3KkXO5Uxy2rrPie5gVkRhT7LZH/7xaa3sFxKlv1N78rSzDJDyZguNIfDQHvwT8JmQcL38c5ehdgEna9Q39IGDE5dPdHXf4SRhN8X3xIWulodssgCX4RWSqaDzDxKO/nd6vcKgo0acJpP/fb4iBXBZKhhexVtErVKJcpv3MsWaXQXIFDA/AoQik="
