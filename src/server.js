@@ -5,8 +5,8 @@ import socketIO from 'socket.io';
 import dotenv from 'dotenv';
 
 import { generateMessage, generateLocationMessage } from './utils/message';
-import { isRealString } from './utils/validation';
-import { Users } from './utils/users';
+import isRealString from './utils/validation';
+import Users from './utils/users';
 
 dotenv.config();
 
