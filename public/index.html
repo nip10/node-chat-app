@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta content="utf-8" />
+    <meta
+      name="description"
+      content="Talk to everyone you want with this Chat App"
+    />
+    <meta name="keywords" content="Chat, PWA, App" />
+    <meta name="author" content="Diogo Cardoso" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="./favicon.ico" type="image/ico" />
+    <meta name="theme-color" content="#265f82" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="manifest" href="./manifest.json" />
+    <title>ChatApp</title>
+  </head>
 
-<head>
-  <meta content="utf-8">
-  <meta name="description" content="Talk to everyone you want with this Chat App">
-  <meta name="keywords" content="Chat, PWA, App">
-  <meta name="author" content="Diogo Cardoso">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
-  <link rel="icon" href="./favicon.ico" type="image/ico">
-  <meta name="theme-color" content="#265f82">
-  <link rel="stylesheet" href="./css/styles.css">
-  <link rel="manifest" href="./manifest.json">
-  <title>ChatApp</title>
-</head>
+  <body class="centered-form">
+    <div class="centered-form__form">
+      <form action="./chat.html">
+        <div class="form-field">
+          <h3>Join a Chat</h3>
+        </div>
+        <div class="form-field">
+          <label for="name">Display name</label>
+          <input type="text" name="name" id="name" autofocus required />
+        </div>
+        <div class="form-field">
+          <label for="room">Room name</label>
+          <input type="text" name="room" id="room" required />
+        </div>
+        <div class="form-field">
+          <button>Join</button>
+        </div>
+      </form>
+    </div>
+    <!-- Google Analytics. -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-86268019-4"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-<body class="centered-form">
-  <div class="centered-form__form">
-    <form action="./chat.html">
-      <div class="form-field">
-        <h3>Join a Chat</h3>
-      </div>
-      <div class="form-field">
-        <label for="name">Display name</label>
-        <input type="text" name="name" id="name" autofocus required>
-      </div>
-      <div class="form-field">
-        <label for="room">Room name</label>
-        <input type="text" name="room" id="room" required>
-      </div>
-      <div class="form-field">
-        <button>Join</button>
-      </div>
-    </form>
-  </div>
-  <!-- Google Analytics. -->
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-86268019-4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-86268019-4');
-  </script>
-</body>
-
+      gtag("config", "UA-86268019-4");
+    </script>
+  </body>
 </html>

@@ -2,7 +2,10 @@
 
 /* eslint-disable no-alert */
 
-const socket = io('https://www.chat.diogocardoso.me', {
+const BASE_URL = 'https://www.chat.diogocardoso.me';
+// const BASE_URL = 'http://localhost:3001';
+
+const socket = io(BASE_URL, {
   path: '/chat/socket.io',
 });
 
