@@ -1,14 +1,8 @@
 {
   "parser": "babel-eslint",
-  "extends": [
-    "airbnb-base",
-    "prettier"
-  ],
+  "extends": ["airbnb-base", "prettier"],
   "rules": {
-    "linebreak-style": [
-      "error",
-      "windows"
-    ],
+    "linebreak-style": 0,
     "no-console": "off",
     "prettier/prettier": [
       "error",
@@ -23,14 +17,10 @@
     "node": true,
     "es6": true
   },
-  "plugins": [
-    "prettier"
-  ],
+  "plugins": ["prettier"],
   "overrides": [
     {
-      "files": [
-        "public/js/*.js"
-      ],
+      "files": ["public/js/*.js"],
       "parserOptions": {
         "sourceType": "script"
       },
@@ -45,9 +35,7 @@
       }
     },
     {
-      "files": [
-        "src/**/*.test.js"
-      ],
+      "files": ["src/**/*.test.js"],
       "env": {
         "node": true,
         "es6": true,
