@@ -1,4 +1,4 @@
-import { isRealString } from './validation';
+import isRealString from './validation';
 
 describe('isRealString', () => {
   it('should reject non-string values', () => {

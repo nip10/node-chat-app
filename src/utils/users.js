@@ -1,4 +1,4 @@
-class Users {
+export default class Users {
   constructor() {
     this.users = [];
   }
@@ -23,5 +23,3 @@ class Users {
     return namesArray;
   };
 }
-
-module.exports = { Users };

@@ -1,4 +1,4 @@
-import { Users } from './users';
+import Users from './users';
 
 describe('Users', () => {
   let users;
