@@ -18,6 +18,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server, { path: '/chat/socket.io' });
 
+// Using nginx in prod, so the server only handles the socket
 if (NODE_ENV !== 'production') {
   const publicPath = path.join(__dirname, '../public');
   app.use(express.static(publicPath));
