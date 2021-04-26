@@ -15,11 +15,10 @@ export default class Users {
     return user;
   };
 
-  getUser = id => this.users.filter(user => user.id === id)[0];
+  getUser = id => this.users.find(user => user.id === id);
 
   getUserList = room => {
-    const users = this.users.filter(user => user.room === room);
-    const namesArray = users.map(user => user.name);
-    return namesArray;
+    const users = this.users.filter(user => user.room === room).map(user => user.name);
+    return users;
   };
 }

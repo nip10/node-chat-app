@@ -2,7 +2,7 @@
 
 /* eslint-disable no-alert */
 
-const BASE_URL = 'https://www.api.chat.diogocardoso.me';
+const BASE_URL = 'https://api.chat.diogocardoso.dev';
 // const BASE_URL = 'http://localhost:3001';
 
 const socket = io(BASE_URL, {
